@@ -12,41 +12,60 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: radial-gradient(circle at top, #29113f 0%, #09070d 45%, #030205 100%);
-      color: white;
+      background:
+        radial-gradient(circle at top right, rgba(140, 140, 160, 0.14), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(95, 72, 140, 0.14), transparent 30%),
+        linear-gradient(180deg, #050505 0%, #0b0b0d 45%, #020202 100%);
+      color: #f5f5f5;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+
     header {
       width: 100%;
-      padding: 24px 8%;
+      padding: 22px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(5, 4, 10, 0.75);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(180, 88, 255, 0.18);
+      background: rgba(5, 5, 6, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .logo {
       font-size: 1.8rem;
       font-weight: 900;
       letter-spacing: 1px;
-      color: #fff;
-      text-shadow: 0 0 18px #9b4dff;
+      color: #ffffff;
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
     }
 
     .logo span {
-      color: #b45cff;
+      color: #bcbcbc;
     }
 
     nav a {
-      color: #d8c9ff;
+      color: #b9b9b9;
       text-decoration: none;
       margin-left: 24px;
       font-size: 0.95rem;
@@ -55,35 +74,54 @@
 
     nav a:hover {
       color: #ffffff;
-      text-shadow: 0 0 10px #b45cff;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.28);
     }
 
     .hero {
       min-height: 86vh;
       padding: 80px 8%;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
-      gap: 40px;
+      gap: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: #cfcfcf;
+      font-size: 0.82rem;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 8vw, 7rem);
+      font-size: clamp(3.1rem, 8vw, 7rem);
       line-height: 0.9;
       text-transform: uppercase;
-      text-shadow: 0 0 30px rgba(180, 92, 255, 0.8);
+      letter-spacing: -4px;
+      color: #ffffff;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.12);
     }
 
     .hero h1 span {
-      color: #b45cff;
+      color: #d7d7d7;
+      background: linear-gradient(90deg, #ffffff, #8f8f96);
+      -webkit-background-clip: text;
+      background-clip: text; 
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      color: #cfc4df;
-      max-width: 600px;
+      color: #bdbdc2;
+      max-width: 610px;
       margin-top: 24px;
-      font-size: 1.1rem;
-      line-height: 1.7;
+      font-size: 1.08rem;
+      line-height: 1.75;
     }
 
     .buttons {
@@ -98,46 +136,71 @@
       padding: 14px 22px;
       border-radius: 999px;
       cursor: pointer;
-      font-weight: 700;
-      color: white;
-      background: linear-gradient(135deg, #8a2cff, #ff2f86);
-      box-shadow: 0 0 24px rgba(180, 92, 255, 0.45);
+      font-weight: 800;
+      color: #050505;
+      background: linear-gradient(135deg, #ffffff, #c7c7c7);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.10);
       text-decoration: none;
-      transition: 0.2s;
+      transition: 0.22s;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 34px rgba(255, 47, 134, 0.6);
-    }
-
-    .btn.secondary {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: none;
+      box-shadow: 0 0 34px rgba(255, 255, 255, 0.18);
+      background: linear-gradient(135deg, #ffffff, #e2e2e2);
     }
 
     .visualizer-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: 0 0 50px rgba(122, 45, 255, 0.22);
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .visualizer-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -60px;
+      top: -60px;
+      background: rgba(180, 180, 200, 0.08);
+      filter: blur(20px);
+      border-radius: 50%;
     }
 
     .speaker {
+      position: relative;
       width: 260px;
       height: 260px;
       margin: 0 auto 28px;
       border-radius: 50%;
-      background: radial-gradient(circle, #0b0710 18%, #1a1025 19%, #07040b 45%, #b45cff 46%, #1a1025 52%, #08050d 70%);
-      box-shadow: 0 0 55px rgba(180, 92, 255, 0.6), inset 0 0 60px rgba(0,0,0,0.8);
-      animation: pulse 1.1s infinite ease-in-out;
+      background:
+        radial-gradient(circle, #0a0a0a 16%, #1c1c1f 17%, #050505 38%, #8d8d92 39%, #171719 46%, #050505 70%);
+      box-shadow:
+        0 0 35px rgba(255, 255, 255, 0.08),
+        inset 0 0 70px rgba(0,0,0,0.9),
+        inset 0 0 0 14px rgba(255,255,255,0.025);
+      animation: pulse 1.15s infinite ease-in-out;
+    }
+
+    .speaker::after {
+      content: "";
+      position: absolute;
+      inset: 88px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #2b2b2e, #060606);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.045); }
+      50% { transform: scale(1.035); }
     }
 
     .bars {
@@ -151,9 +214,10 @@
     .bars span {
       width: 12px;
       border-radius: 999px;
-      background: linear-gradient(#ff2f86, #8a2cff);
+      background: linear-gradient(#ffffff, #77777d);
       animation: bounce 1s infinite ease-in-out;
-      box-shadow: 0 0 15px #b45cff;
+      box-shadow: 0 0 14px rgba(255,255,255,0.12);
+      opacity: 0.92;
     }
 
     .bars span:nth-child(1) { height: 35px; animation-delay: 0s; }
@@ -165,114 +229,129 @@
     .bars span:nth-child(7) { height: 38px; animation-delay: 0.6s; }
 
     @keyframes bounce {
-      0%, 100% { transform: scaleY(0.45); }
-      50% { transform: scaleY(1); }
+      0%, 100% { transform: scaleY(0.45); opacity: 0.5; }
+      50% { transform: scaleY(1); opacity: 1; }
     }
 
     section {
-      padding: 70px 8%;
+      padding: 72px 8%;
     }
 
     .section-title {
-      font-size: 2.4rem;
-      margin-bottom: 16px;
-      text-shadow: 0 0 18px rgba(180, 92, 255, 0.45);
+      font-size: 2.45rem;
+      margin-bottom: 14px;
+      color: #ffffff;
+      letter-spacing: -1px;
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
     }
 
     .section-subtitle {
-      color: #bfb3d5;
+      color: #aeb0b7;
       margin-bottom: 34px;
-      max-width: 700px;
-      line-height: 1.6;
+      max-width: 720px;
+      line-height: 1.65;
     }
 
-    .category-grid,
     .track-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
 
     .card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.09);
       border-radius: 24px;
       padding: 22px;
-      transition: 0.2s;
+      transition: 0.22s;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), transparent 45%);
+      opacity: 0;
+      transition: 0.22s;
+      pointer-events: none;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      border-color: rgba(180, 92, 255, 0.55);
-      box-shadow: 0 0 30px rgba(180, 92, 255, 0.18);
+      border-color: rgba(255,255,255,0.18);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,0.28),
+        0 0 24px rgba(255,255,255,0.055),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card h3 {
       margin-bottom: 10px;
-      font-size: 1.25rem;
+      font-size: 1.28rem;
+      color: #ffffff;
     }
 
     .card p {
-      color: #c4b8d8;
+      color: #b7b7bd;
       line-height: 1.5;
       font-size: 0.95rem;
     }
 
     .track-card {
-      position: relative;
-      overflow: hidden;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
     }
 
     .tag {
       display: inline-block;
+      width: fit-content;
       margin-bottom: 12px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(180, 92, 255, 0.18);
-      color: #e7d6ff;
-      font-size: 0.8rem;
-      border: 1px solid rgba(180, 92, 255, 0.35);
+      background: rgba(255,255,255,0.06);
+      color: #dadada;
+      font-size: 0.78rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     audio {
       width: 100%;
-      margin-top: 18px;
-      filter: invert(1) hue-rotate(240deg);
+      margin-top: auto;
+      filter: invert(1) grayscale(1) contrast(1.05);
+      opacity: 0.88;
     }
 
     .rating {
       margin-top: 14px;
-      color: #ff73b4;
-      font-weight: 700;
-    }
-
-    .upload-box {
-      background: linear-gradient(135deg, rgba(138,44,255,0.18), rgba(255,47,134,0.12));
-      border: 1px dashed rgba(255,255,255,0.32);
-      border-radius: 28px;
-      padding: 34px;
-      text-align: center;
-    }
-
-    .upload-box p {
-      color: #cfc4df;
-      margin: 14px auto 0;
-      max-width: 700px;
-      line-height: 1.6;
+      margin-bottom: 18px;
+      color: #eeeeee;
+      font-weight: 800;
+      font-size: 0.92rem;
     }
 
     footer {
       padding: 32px 8%;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #a99abc;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #89898f;
       text-align: center;
-      background: #050309;
+      background: #030303;
     }
 
     @media (max-width: 800px) {
       header {
         flex-direction: column;
-        gap: 16px;
+        gap: 14px;
+        padding: 18px 6%;
       }
 
       nav a {
@@ -282,6 +361,11 @@
       .hero {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 60px 6%;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
       }
 
       .hero p {
@@ -291,6 +375,15 @@
 
       .buttons {
         justify-content: center;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+
+      .speaker {
+        width: 220px;
+        height: 220px;
       }
     }
   </style>
@@ -306,13 +399,13 @@
   <main>
     <section class="hero">
       <div>
+        <div class="eyebrow">Personal Bass App • No Ads</div>
         <h1>Feel Every <span>Hertz</span></h1>
         <p>
           A personal bass music collection built for deep lows, clean subwoofer demos, and tracks that hit hard on powerful car audio systems.
         </p>
         <div class="buttons">
           <a href="#tracks" class="btn">Explore Tracks</a>
-          <a href="#categories" class="btn secondary">Bass Categories</a>
         </div>
       </div>
 
@@ -325,14 +418,14 @@
     </section>
 
     <section id="tracks">
-      <h2 class="section-title">My Bass Collection</h2>
+      <h2 class="section-title">Re-Bassed Songs</h2>
       <p class="section-subtitle">
-        Drop your audio files into the assets/music folder and replace the sample song names with your own collection.
+        Enjoy bass-boosted songs with no ads, no clutter, and a clean personal player made for heavy systems.
       </p>
 
       <div class="track-grid">
         <div class="card track-card">
-          <span class="tag">Clasic Re-Bassed</span>
+          <span class="tag">Classic Re-Bassed</span>
           <h3>A Mili</h3>
           <p>Lil Wayne (39Hz).</p>
           <div class="rating">Bass Rating: GOD DAMNNNN</div>
@@ -342,9 +435,9 @@
         </div>
 
         <div class="card track-card">
-          <span class="tag">Clasic Re-Bassed</span>
+          <span class="tag">Classic Re-Bassed</span>
           <h3>California Girls</h3>
-          <p>why did i even add this??? (17 - 28Hz) </p>
+          <p>why did i even add this??? (17 - 28Hz)</p>
           <div class="rating">Bass Rating: GOD DAMN</div>
           <audio controls>
             <source src="assets/music/GURLS.mp3" type="audio/mpeg" />
@@ -352,7 +445,7 @@
         </div>
 
         <div class="card track-card">
-          <span class="tag">Goofy shit</span>
+          <span class="tag">Goofy Shit</span>
           <h3>Mickey Mouse Trap House</h3>
           <p>Hot dawgg.</p>
           <div class="rating">Bass Rating: Mehh</div>
@@ -362,10 +455,6 @@
         </div>
       </div>
     </section>
-
-    
-
-    
   </main>
 
   <footer>
